@@ -9,6 +9,7 @@ copyright:           "2020 Author name here"
 extra-source-files:
 - README.md
 - ChangeLog.md
+- DESCRIPTION.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -87,3 +88,8 @@ executables:
     source-dirs:         src-web
     dependencies:
     - haskell-simple-interactive-interpreter-web
+    - asterius-prelude
+    - file-embed
+    - bytestring
+    default-extensions:
+    - TemplateHaskell
