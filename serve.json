@@ -1,0 +1,6 @@
+{
+  "public": ".asterius-work/dist/",
+  "rewrites": [
+    { "source": "/", "destination": "/web.html" }
+  ]
+}
