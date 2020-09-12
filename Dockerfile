@@ -1,9 +1,14 @@
-FROM terrorjack/asterius:200702
+FROM terrorjack/asterius:200830
 
-RUN ahc-cabal v1-update
+VOLUME /workspace
+WORKDIR /workspace
+EXPOSE 5000
 
-RUN cabal v2-update
-RUN cabal v2-install hpack -j --constraint='hpack == 0.34.2' --installdir=/bin --install-method=copy
+ARG hpack_version=0.34.2
+RUN cabal v2-update && cabal v2-install hpack -j --constraint="hpack == $hpack_version" --installdir=/bin --install-method=copy --overwrite-policy=always --ghc-options='-optl-static -optl-pthread'
 
 RUN npm i -g serve
-EXPOSE 5000
+RUN npm i -g nodemon
+
+ARG force_update
+RUN ahc-cabal new-update

@@ -5,15 +5,15 @@
 [Docker](https://www.docker.com/get-started) required.
 
 ```bash
-# enter to docker container
-./start.sh
+# setup
+./run.sh update
 
 # build
-./docker-scripts/build.sh
+./run.sh build
 
 # run interpreter with command line interface (using node)
-./docker-scripts/run.sh cli
+./run.sh exec cli
 
 # run interpreter with web interface (using browser)
-./docker-scripts/run.sh web
+./run.sh exec web
 ```
