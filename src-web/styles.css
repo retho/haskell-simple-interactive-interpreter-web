@@ -1,0 +1,83 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f7f7f7;
+  font-family: 'Merriweather';
+  margin: 0;
+}
+
+.app-header {
+  width: 1200px;
+  margin: 0.5em auto;
+  padding-left: 0.5em;
+  color: #2e659c; /* #4F4371 */
+  text-shadow: 1px 1px 1px #ffffff;
+  font-size: 3em;
+}
+
+.app-console {
+  background: #fff;
+  font-size: 15px;
+  padding: 2em 0 2em 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "ubuntu mono",monospace;
+  font-size: 14px;
+}
+
+.app-console__container {
+  flex: 0 0 600px;
+  padding: 0 12px;
+  height: 300px;
+  overflow-y: hidden;
+}
+
+.app-console-tip {
+  color: #888;
+  padding-bottom: 0.5em;
+}
+
+.app-console-input {
+  display: flex;
+  flex-direction: row;
+  line-height: 1.5em;
+}
+
+.app-console-input__label {
+  color: #8f4e8b;
+  font-weight: bold;
+}
+
+.app-console-input__input {
+  flex: 1 0 0;
+  border: 0;
+  outline: none;
+}
+input.app-console-input__input:disabled {
+  background: inherit;
+}
+
+div#description {
+  width: 1200px;
+  margin: 0 auto;
+  line-height: 1.5em;
+}
+
+*::-webkit-scrollbar {
+  width: 7px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: slategrey;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 2px;
+}

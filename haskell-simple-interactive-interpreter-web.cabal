@@ -3,6 +3,8 @@ cabal-version: 1.12
 -- This file has been generated from package.yaml by hpack version 0.34.2.
 --
 -- see: https://github.com/sol/hpack
+--
+-- hash: 71de028b1376e0c2ffeb82ba3a5fe83b2ececefd869ea1131d63aa78790839e6
 
 name:           haskell-simple-interactive-interpreter-web
 version:        0.1.0.0
@@ -19,6 +21,7 @@ extra-source-files:
     README.md
     ChangeLog.md
     DESCRIPTION.md
+    src-web/styles.css
 
 source-repository head
   type: git
