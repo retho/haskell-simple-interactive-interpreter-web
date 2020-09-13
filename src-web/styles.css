@@ -63,6 +63,14 @@ input.app-console-input__input:disabled {
   background: inherit;
 }
 
+.app-console-error {
+  color: #8f4e8b;
+}
+
+.app-console-value {
+  color: #2e659c;
+}
+
 div#description {
   width: 1200px;
   margin: 0 auto;

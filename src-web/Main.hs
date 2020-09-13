@@ -9,6 +9,10 @@ import Data.FileEmbed
 import Data.Coerce (coerce)
 import Data.Maybe (fromJust)
 import Control.Monad (when)
+import Data.IORef
+
+import Interpreter (newInterpreter)
+import qualified Interpreter as I (input)
 
 description :: JSString
 description = bytestring2jsstring $(embedFile "DESCRIPTION.md")
@@ -25,13 +29,21 @@ main = do
   document_body_append_child $ createElement "div" "root" $ stringifyHtml layout
   wrp <- getElementById "console-input-wrapper" >>= pure . fromJust
   inp <- getElementById "console-input" >>= pure . fromJust
+  interpreterRef <- newIORef newInterpreter
   let
     handlekeypress :: JSKeyEvent -> IO JSVal
     handlekeypress ev
       | isEnterPressed ev = do
         val <- getInputValue inp
         when (jsstr_length (js_trim val) > 0) $ do
+          i0 <- readIORef interpreterRef
           insert_before_node wrp $ createElement "div" "" $ stringifyHtml $ renderConsoleInput val True Nothing
+          case I.input (fromJSString val) i0 of
+            (Left err) -> insert_before_node wrp $ createElement "div" "" $ stringifyHtml $ div' [("class", "app-console-error")] $ text (toJSString err)
+            (Right (Just r, i1)) -> do
+              insert_before_node wrp . createElement "div" "" . stringifyHtml . div' [("class", "app-console-value")] . text . json_stringify $ double2jsval r
+              writeIORef interpreterRef i1
+            (Right (Nothing, i1)) -> writeIORef interpreterRef i1
         setInputValue inp ""
         pure js_null
       | otherwise = pure js_null
@@ -53,9 +65,9 @@ layout = div []
 
 getElementById :: JSString -> IO (Maybe JSHtmlElement)
 getElementById attr_id = get_element_by_id attr_id >>= \val ->
-    if is_null_or_undefined val
-      then pure $ Nothing
-      else pure . pure $ coerce val
+  if is_null_or_undefined val
+    then pure $ Nothing
+    else pure . pure $ coerce val
 
 newtype JSKeyEvent = JSKeyEvent JSVal
 
@@ -137,3 +149,6 @@ joinStr (x:xs) sep = x <> sep <> joinStr xs sep
 
 foreign import javascript "$1.trim()" js_trim :: JSString -> JSString
 foreign import javascript "$1.length" jsstr_length :: JSString -> Int
+
+foreign import javascript "$1" double2jsval :: Double -> JSVal
+foreign import javascript "JSON.stringify($1)" json_stringify :: JSVal -> JSString
