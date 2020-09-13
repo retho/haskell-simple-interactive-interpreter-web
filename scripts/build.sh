@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 builddir=".asterius-work/build"
 distdir=".dist"
 
