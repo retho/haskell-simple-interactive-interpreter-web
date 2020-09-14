@@ -12,7 +12,6 @@ body {
 .app-header {
   width: 1200px;
   margin: 0.5em auto;
-  padding-left: 0.5em;
   color: #2e659c; /* #4F4371 */
   text-shadow: 1px 1px 1px #ffffff;
   font-size: 3em;

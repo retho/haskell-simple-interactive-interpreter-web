@@ -1,7 +1,6 @@
+[origin](https://www.codewars.com/kata/52ffcfa4aff455b3c2000750)
 
 # Simple Interactive Interpreter
-
-[source](https://www.codewars.com/kata/52ffcfa4aff455b3c2000750)
 
 You will create an interpreter which takes inputs described below and produces outputs, storing state in between each input. This is a simplified version of the Simple Interactive Interpreter kata with functions removed, so if you have fun with this kata, check out its big brother to add functions into the mix.
 
