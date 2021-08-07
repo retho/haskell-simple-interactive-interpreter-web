@@ -17,3 +17,12 @@
 # run interpreter with web interface (using browser)
 ./run.sh exec web
 ```
+
+# Deploy to GitHub Pages
+
+https://retho.github.io/haskell-simple-interactive-interpreter-web/
+
+```bash
+./run.sh build
+./deploy.sh
+```
